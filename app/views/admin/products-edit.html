@@ -1,0 +1,27 @@
+<header>
+  <h1>Update product</h1>
+</header>
+<form role="form">
+  <div class="form-group required">
+    <label class="control-label" for="product-name">Name</label>
+    <input type="text" class="form-control" name="product-name" id="product-name" placeholder="Product name" value="Product name" required>
+  </div>
+  <div class="form-group required">
+    <label class="control-label" for="product-description">Description</label>
+    <textarea class="form-control" name="product-description" id="product-description" placeholder="Product description" required> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus quidem, quibusdam, eius quasi doloremque, sint corporis dignissimos. </textarea>
+  </div>
+  <div class="form-group required">
+    <label class="control-label" for="product-price">Price</label>
+    <input type="number" class="form-control" name="product-price" id="product-price" placeholder="Product price" value="100.00" required>
+  </div>
+  <div class="form-group required">
+    <label class="control-label" for="product-shelf">Total shelf</label>
+    <input type="number" class="form-control" name="product-shelf" id="product-shelf" placeholder="Total products in shelf" value="100" required>
+  </div>
+  <div class="form-group required">
+    <label class="control-label" for="product-shelf">Total vault</label>
+    <input type="number" class="form-control" name="product-vault" id="product-vault" placeholder="Total products in vault" value="100" required>
+  </div>
+  <button type="submit" class="btn btn-block btn-success">Update product</button>
+  <a href="#/stores/1" class="btn btn-block btn-danger">Go back</a>
+</form>
