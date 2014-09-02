@@ -8,7 +8,7 @@
  * Controller of the gapStoreApp
  */
 angular.module('gapStoreApp')
-  .controller('StoresNewCtrl', function ($scope, localstorageFactory, storesFactory, idFactory) {
+  .controller('StoresNewCtrl', function ($scope, storesFactory, $location) {
     
     /**
      * Create a store in localstorage
@@ -19,7 +19,8 @@ angular.module('gapStoreApp')
               name: $scope.store.name,
               address: $scope.store.address
             });
-        console.log( localstorageFactory.set('stores', data) );
+        
+        $location.path('/');
       }
     };
 

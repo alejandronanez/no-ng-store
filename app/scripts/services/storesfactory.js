@@ -12,6 +12,7 @@ angular.module('gapStoreApp')
 
     var createStore = function (data) {
           var currentValue = [];
+
           if ( localstorageFactory.get('stores') && localstorageFactory.get('stores') instanceof Array ) {
             currentValue = localstorageFactory.get('stores');
           }
@@ -19,11 +20,16 @@ angular.module('gapStoreApp')
           data['id'] = idFactory.getId();
           data['products'] = [];
           currentValue.push(data);
-          return currentValue;
+          return localstorageFactory.set('stores', currentValue);
+        },
+        updateStore = function () {
+
         };
 
     // Public API here
     return {
-      createStore: createStore
+      createStore: createStore,
+      updateStore: updateStore
     };
+    
   });
