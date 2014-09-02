@@ -29,6 +29,9 @@ angular
       .when('/stores/1', {
         templateUrl: 'views/admin/store-detail.html',
       })
+      .when('/products/new', {
+        templateUrl: 'views/admin/products-new.html',
+      })
       .otherwise({
         redirectTo: '/'
       });
