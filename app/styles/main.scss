@@ -10,7 +10,7 @@
 
 /* Space out content a bit */
 body {
-  padding-top: 20px;
+  padding-top: 80px;
   padding-bottom: 20px;
 }
 
@@ -64,6 +64,12 @@ body {
   p + h4 {
     margin-top: 28px;
   }
+}
+
+/* Required asterisk on form inputs */
+.form-group.required .control-label:after { 
+   content:"*";
+   color:red;
 }
 
 /* Responsive: Portrait tablets and up */
