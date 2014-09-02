@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name gapStoreApp.controller:MainCtrl
+ * @name gapStoreApp.controller:StoreNewCtrl
  * @description
- * # MainCtrl
+ * # StoreNewCtrl
  * Controller of the gapStoreApp
  */
 angular.module('gapStoreApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('StoresNewCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

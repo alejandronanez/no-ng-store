@@ -18,19 +18,23 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/admin/stores.html'
+        redirectTo: '/stores'
       })
       .when('/stores', {
-        templateUrl: 'views/admin/stores.html'
+        templateUrl: 'views/admin/stores.html',
+        controller: 'StoresCtrl'
       })
       .when('/stores/new', {
         templateUrl: 'views/admin/stores-new.html',
+        controller: 'StoresNewCtrl'
       })
       .when('/stores/1/edit', {
         templateUrl: 'views/admin/stores-edit.html',
+        controller: 'StoresEditCtrl'
       })
       .when('/stores/1', {
         templateUrl: 'views/admin/store-detail.html',
+        controller: 'StoreDetailCtrl'
       })
       .when('/products/new', {
         templateUrl: 'views/admin/products-new.html',
@@ -41,7 +45,20 @@ angular
       .when('/products/1', {
         templateUrl: 'views/admin/product-detail.html',
       })
+      .when('/testing', {
+        templateUrl: 'views/testing.html',
+        controller: 'TestingCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
   });
+
+/*=============================================
+=            BOOTSTRAP APPLICATION            =
+=============================================*/
+
+angular.element(document).ready(function () {
+  angular.bootstrap(document, ['gapStoreApp']);
+});
+

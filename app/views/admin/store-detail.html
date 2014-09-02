@@ -1,5 +1,5 @@
 <header>
-  <h1>Store Name # 1<br><small>Lorem ipsum dolor sit amet</small></h1>
+  <h1>{{ store.name }}<br><small>{{ store.address }}</small></h1>
 </header>
 <h2>Products</h2>
 <div class="table-responsive">
@@ -15,59 +15,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1,001</td>
-        <td>Blue shoes</td>
-        <td>Lorem ipsum dolor</td>
-        <td>$50.00</td>
-        <td>100</td>
-        <td>200</td>
-        <td><a href="#/products/1">View</a></td>
-        <td><a href="#/products/1/edit">Edit</a></td>
-        <td><a href="/#">Delete</a></td>
-      </tr>
-      <tr>
-        <td>1,002</td>
-        <td>Blue shoes</td>
-        <td>Lorem ipsum dolor</td>
-        <td>$50.00</td>
-        <td>100</td>
-        <td>200</td>
-        <td><a href="#/products/1">View</a></td>
-        <td><a href="#/products/1/edit">Edit</a></td>
-        <td><a href="/#">Delete</a></td>
-      </tr>
-      <tr>
-        <td>1,003</td>
-        <td>Blue shoes</td>
-        <td>Lorem ipsum dolor</td>
-        <td>$50.00</td>
-        <td>100</td>
-        <td>200</td>
-        <td><a href="#/products/1">View</a></td>
-        <td><a href="#/products/1/edit">Edit</a></td>
-        <td><a href="/#">Delete</a></td>
-      </tr>
-      <tr>
-        <td>1,004</td>
-        <td>Blue shoes</td>
-        <td>Lorem ipsum dolor</td>
-        <td>$50.00</td>
-        <td>100</td>
-        <td>200</td>
-        <td><a href="#/products/1">View</a></td>
-        <td><a href="#/products/1/edit">Edit</a></td>
-        <td><a href="/#">Delete</a></td>
-      </tr>
-      <tr>
-        <td>1,005</td>
-        <td>Blue shoes</td>
-        <td>Lorem ipsum dolor</td>
-        <td>$50.00</td>
-        <td>100</td>
-        <td>200</td>
-        <td><a href="#/products/1">View</a></td>
-        <td><a href="#/products/1/edit">Edit</a></td>
+      <tr ng-repeat="product in products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.total_in_shelf }}</td>
+        <td>{{ product.total_in_vault }}</td>
+        <td><a href="#/products/{{ product.id }}">View</a></td>
+        <td><a href="#/products/{{ product.id }}/edit">Edit</a></td>
         <td><a href="/#">Delete</a></td>
       </tr>
     </tbody>
