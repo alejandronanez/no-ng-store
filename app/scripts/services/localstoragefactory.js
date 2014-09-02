@@ -39,7 +39,7 @@ angular.module('gapStoreApp')
          * @param  {[type]} value Element to store
          * @return {[type]}       The inserted element
          */
-        storeItem = function (key, value) {
+        setItem = function (key, value) {
           store.set(key, value);
           return getItem(key);
         },
@@ -57,6 +57,6 @@ angular.module('gapStoreApp')
       clear: clear,
       get: getItem,
       remove: removeItem,
-      set: storeItem
+      set: setItem
     };
   });
