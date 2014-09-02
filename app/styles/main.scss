@@ -68,7 +68,7 @@ body {
 
 /* Required asterisk on form inputs */
 .form-group.required .control-label:after { 
-   content:"*";
+   content:" *";
    color:red;
 }
 

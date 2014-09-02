@@ -32,6 +32,9 @@ angular
       .when('/products/new', {
         templateUrl: 'views/admin/products-new.html',
       })
+      .when('/products/1/edit', {
+        templateUrl: 'views/admin/products-edit.html',
+      })
       .otherwise({
         redirectTo: '/'
       });
