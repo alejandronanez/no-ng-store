@@ -17,6 +17,9 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
+      .when('/', {
+        templateUrl: 'views/admin/stores.html'
+      })
       .when('/stores', {
         templateUrl: 'views/admin/stores.html'
       })
@@ -34,6 +37,9 @@ angular
       })
       .when('/products/1/edit', {
         templateUrl: 'views/admin/products-edit.html',
+      })
+      .when('/products/1', {
+        templateUrl: 'views/admin/product-detail.html',
       })
       .otherwise({
         redirectTo: '/'

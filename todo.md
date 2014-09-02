@@ -6,8 +6,8 @@
 	- [X] Edit store
 	- [X] View Store detail (NAME - Address) + Products
 	- [X] Create Products
-	- [ ] Edit products
-	- [ ] Product detail (could be, all information can be accessible from the Store detail)
+	- [X] Edit products
+	- [X] Product detail (could be, all information can be accessible from the Store detail)
 
 ## CLIENT
 	- [ ] View Stores
