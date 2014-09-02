@@ -8,6 +8,12 @@
 	- [X] Create Products
 	- [X] Edit products
 	- [X] Product detail (could be, all information can be accessible from the Store detail)
+	- [X] Controllers with dummy data
+	- [ ] Get real data
+	- [ ] Store real data
+	- [ ] Update real data
+	- [ ] Delete real data
+	- [ ] Validate forms
 
 ## CLIENT
 	- [ ] View Stores
