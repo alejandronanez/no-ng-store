@@ -41,9 +41,11 @@ angular
       })
       .when('/products/1/edit', {
         templateUrl: 'views/admin/products-edit.html',
+        controller: 'ProductsEditCtrl'
       })
       .when('/products/1', {
         templateUrl: 'views/admin/product-detail.html',
+        controller: 'ProductDetailCtrl'
       })
       .when('/testing', {
         templateUrl: 'views/testing.html',

@@ -57,4 +57,9 @@ angular.module('gapStoreApp')
         'total_in_vault': 100
       },
     ];
+
+    $scope.delete = function (product) {
+      confirm('Would you like to delete ' + store.name + '?');
+    };
+
   });

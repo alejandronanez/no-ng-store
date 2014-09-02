@@ -24,7 +24,7 @@
         <td>{{ product.total_in_vault }}</td>
         <td><a href="#/products/{{ product.id }}">View</a></td>
         <td><a href="#/products/{{ product.id }}/edit">Edit</a></td>
-        <td><a href="/#">Delete</a></td>
+        <td><a href="#/" ng-click="delete(store)">Delete</a></td>
       </tr>
     </tbody>
   </table>
