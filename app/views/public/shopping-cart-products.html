@@ -1,0 +1,16 @@
+<header>
+    <h1>{{ store.name }}<br><small>{{ store.address }}</small></h1>
+</header>
+<h3>{{ product.name }}</h3>
+<dl>
+    <dt>Price</dt>
+    <dd>{{ product.price }}</dd>
+    <dt>Total in shelf</dt>
+    <dd>{{ product.total_in_shelf }}</dd>
+    <dt>Total in vault</dt>
+    <dd>{{ product.total_in_vault }}</dd>
+    <dt>Description</dt>
+    <dd>{{ product.description }}</dd>
+</dl>
+
+<a href="#/shopping-cart/stores" class="btn btn-block btn-danger">Go back to stores list</a>

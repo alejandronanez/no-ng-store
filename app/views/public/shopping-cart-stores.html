@@ -1,0 +1,15 @@
+<header>
+  <h1>{{ store.name }}</h1>
+  <h2 ng-show="store.products">Available products:</h2>
+  <h2 ng-hide="store.products">This store does not have any product yet</h2>
+</header>
+
+<div ng-show="store.products" class="list-group">
+  <a ng-repeat="product in store.products" href="#/shopping-cart/stores/{{ store.id }}/products/{{ product.id }}" class="list-group-item">{{ product.name }}</a>
+</div>
+
+<div ng-hide="store.products" class="list-group">
+  <p>In the meantime you can visit another store</p>
+</div>
+
+<a href="#/shopping-cart/stores" class="btn btn-block btn-danger">Go back to stores list</a>

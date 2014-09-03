@@ -18,7 +18,7 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        redirectTo: '/stores'
+        redirectTo: '/shopping-cart'
       })
       .when('/stores', {
         templateUrl: 'views/admin/stores.html',
@@ -51,6 +51,18 @@ angular
       .when('/testing', {
         templateUrl: 'views/testing.html',
         controller: 'TestingCtrl'
+      })
+      .when('/shopping-cart', {
+        templateUrl: 'views/public/shopping-cart.html',
+        controller: 'ShoppingCartCtrl'
+      })
+      .when('/shopping-cart/stores/:id', {
+        templateUrl: 'views/public/shopping-cart-stores.html',
+        controller: 'ShoppingCartStoresCtrl'
+      })
+      .when('/shopping-cart/stores/:store_id/products/:id', {
+        templateUrl: 'views/public/shopping-cart-products.html',
+        controller: 'ShoppingCartProductsCtrl'
       })
       .otherwise({
         redirectTo: '/'
