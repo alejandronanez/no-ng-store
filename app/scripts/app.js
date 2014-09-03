@@ -36,7 +36,7 @@ angular
         templateUrl: 'views/admin/store-detail.html',
         controller: 'StoreDetailCtrl'
       })
-      .when('/products/new', {
+      .when('/stores/:store_id/products/new', {
         templateUrl: 'views/admin/products-new.html',
         controller: 'ProductsNewCtrl'
       })
