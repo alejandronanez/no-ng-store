@@ -25,7 +25,7 @@ angular.module('gapStoreApp')
           total_in_vault: $scope.product.total_in_vault
         });
 
-        $location.path('/products/' + $routeParams.store_id);
+        $location.path('/stores/' + $routeParams.store_id);
       }
     };
 
