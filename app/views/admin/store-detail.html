@@ -25,9 +25,9 @@
         <td>{{ product.price }}</td>
         <td>{{ product.total_in_shelf }}</td>
         <td>{{ product.total_in_vault }}</td>
-        <td><a href="#/products/{{ product.id }}">View</a></td>
-        <td><a href="#/products/{{ product.id }}/edit">Edit</a></td>
-        <td><a href="#/" ng-click="delete(store)">Delete</a></td>
+        <td><a href="#/stores/{{ product.store_id }}/products/{{ product.id }}">View</a></td>
+        <td><a href="#/stores/{{ product.store_id }}/products/{{ product.id }}/edit">Edit</a></td>
+        <td><a href="#/" ng-click="delete(product.id)">Delete</a></td>
       </tr>
     </tbody>
   </table>

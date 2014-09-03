@@ -40,11 +40,11 @@ angular
         templateUrl: 'views/admin/products-new.html',
         controller: 'ProductsNewCtrl'
       })
-      .when('/products/1/edit', {
+      .when('/stores/:store_id/products/:id/edit', {
         templateUrl: 'views/admin/products-edit.html',
         controller: 'ProductsEditCtrl'
       })
-      .when('/products/1', {
+      .when('/stores/:store_id/products/:id', {
         templateUrl: 'views/admin/product-detail.html',
         controller: 'ProductDetailCtrl'
       })

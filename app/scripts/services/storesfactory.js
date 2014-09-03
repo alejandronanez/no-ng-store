@@ -43,17 +43,25 @@ angular.module('gapStoreApp')
           return localstorageFactory.set('stores', currentValue);
         },
         /**
-         * Return a record from the 'stores' localstorage
+         * Return a record from the 'id' localstorage
          * @param  {String} id         Id to compare
          * @param  {Array} actualData  Array with all records
+         * @param  {String} key        Alternate key
          * @return {Number}            The indexof the element in the actualData array
          */
-        findRecord = function (id, actualData) {
+        findRecord = function (id, actualData, key) {
+          var key = key || 'id';
           for (var i in actualData) {
-            if (actualData[i]['id'] == id) {
+            if (actualData[i][key] == id) {
               return actualData.indexOf(actualData[i]);
             }
           }
+        },
+        getProduct = function (store_id, product_id) {
+          var actualData = localstorageFactory.get('stores');
+              var store = actualData[findRecord(store_id, actualData)];
+
+              return store['products'][findRecord(product_id, store['products'], 'id')];
         },
         /**
          * Return store id
@@ -101,6 +109,7 @@ angular.module('gapStoreApp')
     return {
       createStore: createStore,
       createProduct: createProduct,
+      getProduct: getProduct,
       getStore: getStore,
       getStoreId: getStoreId,
       setStoreId: setStoreId,
