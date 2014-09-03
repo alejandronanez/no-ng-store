@@ -12,6 +12,11 @@ angular.module('gapStoreApp')
 
     var storeId;
 
+        /**
+         * Create a new store
+         * @param  {Object} data Data to be created
+         * @public
+         */
     var createStore = function (data) {
           var currentValue = [];
 
@@ -24,6 +29,11 @@ angular.module('gapStoreApp')
           currentValue.push(data);
           return localstorageFactory.set('stores', currentValue);
         },
+        /**
+         * Create a new product
+         * @param  {Object} data Data to be created
+         * @public
+         */
         createProduct = function (data) {
           var currentValue = [],
               recordIndex = 0,
@@ -47,6 +57,7 @@ angular.module('gapStoreApp')
          * @param  {String} id         Id to compare
          * @param  {Array} actualData  Array with all records
          * @param  {String} key        Alternate key
+         * @public
          * @return {Number}            The indexof the element in the actualData array
          */
         findRecord = function (id, actualData, key) {
@@ -65,6 +76,7 @@ angular.module('gapStoreApp')
         },
         /**
          * Return store id
+         * @public
          * @return {Number} Store ID
          */
         getStoreId = function () {
@@ -72,6 +84,7 @@ angular.module('gapStoreApp')
         },
         /**
          * Get individual Store
+         * @public
          * @param  {String} key Element key to be retrieved
          */
         getStore = function (key) {
@@ -83,8 +96,17 @@ angular.module('gapStoreApp')
           return actualData[recordIndex];
         },
         /**
+         * Get all stores
+         * @public
+         * @return {Array} All stores array
+         */
+        getStores = function () {
+          return localstorageFactory.get('stores');
+        },
+        /**
          * Set storeId
          * @param {Number} value New value for storeId
+         * @public
          */
         setStoreId = function (value) {
           storeId = value;
@@ -93,6 +115,7 @@ angular.module('gapStoreApp')
          * Do update
          * @param  {String} key  Element key
          * @param  {Array} data  Element data to be updated
+         * @public
          */
         updateStore = function (key, data) {
           var actualData = localstorageFactory.get('stores'),
@@ -105,9 +128,18 @@ angular.module('gapStoreApp')
           localstorageFactory.set('stores', actualData);
         },
         /**
+         * Update all stores
+         * @public
+         * @param {Object} data Data to update
+         */
+        updateStores = function (data) {
+          localstorageFactory.set('stores', data);
+        },
+        /**
          * Do update on the product
          * @param  {String} key  Element key
          * @param  {Array} data  Element data to be updated
+         * @public
          */
         updateProduct = function (keys, data) {
           var actualData = localstorageFactory.get('stores'),
@@ -129,9 +161,11 @@ angular.module('gapStoreApp')
       createProduct: createProduct,
       getProduct: getProduct,
       getStore: getStore,
+      getStores: getStores,
       getStoreId: getStoreId,
       setStoreId: setStoreId,
       updateStore: updateStore,
+      updateStores: updateStores,
       updateProduct: updateProduct
     };
 
