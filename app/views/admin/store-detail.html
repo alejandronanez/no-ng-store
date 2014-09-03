@@ -1,8 +1,11 @@
 <header>
   <h1>{{ store.name }}<br><small>{{ store.address }}</small></h1>
 </header>
-<h2>Products</h2>
-<div class="table-responsive">
+<div class="jumbotron" ng-hide="products.length ">
+  <h3>No products...yet!</h3>
+</div>
+<div ng-show="products.length" class="table-responsive">
+  <h2>Products</h2>
   <table class="table table-striped">
     <thead>
       <tr>

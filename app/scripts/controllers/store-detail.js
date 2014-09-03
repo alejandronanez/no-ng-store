@@ -8,55 +8,11 @@
  * Controller of the gapStoreApp
  */
 angular.module('gapStoreApp')
-  .controller('StoreDetailCtrl', function ($scope) {
-    $scope.store = {
-      'id': 1,
-      'name': 'Main store',
-      'address': 'Main street #1234'
-    }
+  .controller('StoreDetailCtrl', function ($scope, $routeParams, storesFactory) {
 
-    $scope.products = [
-      {
-        'id': 1,
-        'name': 'Athletic shoes',
-        'description': 'Main street #1234',
-        'price': 100,
-        'total_in_shelf': 100,
-        'total_in_vault': 100
-      },
-      {
-        'id': 2,
-        'name': 'Athletic shoes',
-        'description': 'Main street #1234',
-        'price': 100,
-        'total_in_shelf': 100,
-        'total_in_vault': 100
-      },
-      {
-        'id': 3,
-        'name': 'Athletic shoes',
-        'description': 'Main street #1234',
-        'price': 100,
-        'total_in_shelf': 100,
-        'total_in_vault': 100
-      },
-      {
-        'id': 4,
-        'name': 'Athletic shoes',
-        'description': 'Main street #1234',
-        'price': 100,
-        'total_in_shelf': 100,
-        'total_in_vault': 100
-      },
-      {
-        'id': 5,
-        'name': 'Athletic shoes',
-        'description': 'Main street #1234',
-        'price': 100,
-        'total_in_shelf': 100,
-        'total_in_vault': 100
-      },
-    ];
+    var storeId = $routeParams['id'];
+    $scope.store = storesFactory.getStore(storeId);
+    $scope.products = storesFactory.getProducts(storeId);
 
     $scope.delete = function (product) {
       confirm('Would you like to delete ' + store.name + '?');

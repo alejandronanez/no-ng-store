@@ -50,6 +50,14 @@ angular.module('gapStoreApp')
           return actualData[recordIndex];
         },
         /**
+         * Get all products related to a store
+         * @param  {String} key Store id
+         * @return {Array}      All stores related to the store
+         */
+        getProducts = function (key) {
+          console.log('Getting products...');
+        },
+        /**
          * Return a record from the 'stores' localstorage
          * @param  {String} id         Id to compare
          * @param  {Array} actualData  Array with all records
@@ -67,6 +75,7 @@ angular.module('gapStoreApp')
     return {
       createStore: createStore,
       getStore: getStore,
+      getProducts: getProducts,
       updateStore: updateStore
     };
 
