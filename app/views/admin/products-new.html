@@ -1,7 +1,7 @@
 <header>
   <h1>Create product</h1>
 </header>
-<form role="form">
+<form role="form" name="product.form" ng-submit="create()">
   <div class="form-group required">
     <label class="control-label" for="product-name">Name</label>
     <input type="text" class="form-control" name="product.name" id="product-name" placeholder="Product name" ng-model="product.name" required>

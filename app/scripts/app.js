@@ -38,6 +38,7 @@ angular
       })
       .when('/products/new', {
         templateUrl: 'views/admin/products-new.html',
+        controller: 'ProductsNewCtrl'
       })
       .when('/products/1/edit', {
         templateUrl: 'views/admin/products-edit.html',
