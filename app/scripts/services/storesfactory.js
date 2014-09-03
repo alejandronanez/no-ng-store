@@ -22,14 +22,52 @@ angular.module('gapStoreApp')
           currentValue.push(data);
           return localstorageFactory.set('stores', currentValue);
         },
-        updateStore = function () {
+        /**
+         * Do update
+         * @param  {String} key  Element key
+         * @param  {Array} data  Element data to be updated
+         */
+        updateStore = function (key, data) {
+          var actualData = localstorageFactory.get('stores'),
+              recordIndex = 0;
 
+          recordIndex = findRecord(key, actualData);
+          actualData[recordIndex]['name'] = data['name'];
+          actualData[recordIndex]['address'] = data['address'];
+
+          localstorageFactory.set('stores', actualData);
+        },
+        /**
+         * Get individual Store
+         * @param  {String} key Element key to be retrieved
+         */
+        getStore = function (key) {
+          var currentValue = [],
+              recordIndex = 0,
+              actualData = localstorageFactory.get('stores');
+          // Find store with the ID
+          recordIndex = findRecord(key, actualData);
+          return actualData[recordIndex];
+        },
+        /**
+         * Return a record from the 'stores' localstorage
+         * @param  {String} id         Id to compare
+         * @param  {Array} actualData  Array with all records
+         * @return {Number}            The indexof the element in the actualData array
+         */
+        findRecord = function (id, actualData) {
+          for (var i in actualData) {
+            if (actualData[i]['id'] == id) {
+              return actualData.indexOf(actualData[i]);
+            }
+          }
         };
 
     // Public API here
     return {
       createStore: createStore,
+      getStore: getStore,
       updateStore: updateStore
     };
-    
+
   });

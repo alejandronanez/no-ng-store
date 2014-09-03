@@ -28,7 +28,7 @@ angular
         templateUrl: 'views/admin/stores-new.html',
         controller: 'StoresNewCtrl'
       })
-      .when('/stores/1/edit', {
+      .when('/stores/:id/edit', {
         templateUrl: 'views/admin/stores-edit.html',
         controller: 'StoresEditCtrl'
       })
