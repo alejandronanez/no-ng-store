@@ -1,15 +1,15 @@
 <header>
-  <h1>Product # 1 <br><small>On store Store Name</small></h1>
+  <h1>{{ product.name }}<br><small>On store Store Name</small></h1>
 </header>
 <img class="thumbnail" src="http://placehold.it/300x300" alt="">
 <dl>
   <dt>Description</dt>
-  <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt ducimus rem enim, ipsam esse necessitatibus est tenetur veniam reiciendis. Saepe maxime, assumenda quis possimus omnis voluptatum autem architecto magni? Nam.</dd>
+  <dd>{{ product.description }}</dd>
   <dt>Price</dt>
-  <dd>$100.00</dd>
+  <dd>{{ product.price }}</dd>
   <dt>Total in shelf</dt>
-  <dd>100</dd>
+  <dd>{{ product.total_in_shelf}}</dd>
   <dt>Total in vault</dt>
-  <dd>100</dd>
+  <dd>{{ product.total_in_vault}}</dd>
 </dl>
-<a href="#/stores/1" class="btn btn-block btn-danger">Go back</a>
+<a href="#/stores/{{ product.store_id }}" class="btn btn-block btn-danger">Go back</a>

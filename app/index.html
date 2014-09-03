@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="gapStoreApp">
+  <body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -46,20 +46,7 @@
           <div ng-view=""></div>
         </div>
       </div>
-
     </div>
-
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
 
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
@@ -95,8 +82,17 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/services/localstoragefactory.js"></script>
+        <script src="scripts/controllers/testing.js"></script>
+        <script src="scripts/controllers/stores.js"></script>
+        <script src="scripts/controllers/store-detail.js"></script>
+        <script src="scripts/controllers/store-new.js"></script>
+        <script src="scripts/controllers/store-edit.js"></script>
+        <script src="scripts/controllers/products-new.js"></script>
+        <script src="scripts/controllers/products-edit.js"></script>
+        <script src="scripts/controllers/product-detail.js"></script>
+        <script src="scripts/services/storesfactory.js"></script>
+        <script src="scripts/services/idfactory.js"></script>
         <!-- endbuild -->
 </body>
 </html>

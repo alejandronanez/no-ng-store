@@ -18,30 +18,50 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/admin/stores.html'
+        redirectTo: '/stores'
       })
       .when('/stores', {
-        templateUrl: 'views/admin/stores.html'
+        templateUrl: 'views/admin/stores.html',
+        controller: 'StoresCtrl'
       })
       .when('/stores/new', {
         templateUrl: 'views/admin/stores-new.html',
+        controller: 'StoresNewCtrl'
       })
-      .when('/stores/1/edit', {
+      .when('/stores/:id/edit', {
         templateUrl: 'views/admin/stores-edit.html',
+        controller: 'StoresEditCtrl'
       })
-      .when('/stores/1', {
+      .when('/stores/:id', {
         templateUrl: 'views/admin/store-detail.html',
+        controller: 'StoreDetailCtrl'
       })
       .when('/products/new', {
         templateUrl: 'views/admin/products-new.html',
+        controller: 'ProductsNewCtrl'
       })
-      .when('/products/1/edit', {
+      .when('/stores/:store_id/products/:id/edit', {
         templateUrl: 'views/admin/products-edit.html',
+        controller: 'ProductsEditCtrl'
       })
-      .when('/products/1', {
+      .when('/stores/:store_id/products/:id', {
         templateUrl: 'views/admin/product-detail.html',
+        controller: 'ProductDetailCtrl'
+      })
+      .when('/testing', {
+        templateUrl: 'views/testing.html',
+        controller: 'TestingCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
   });
+
+/*=============================================
+=            BOOTSTRAP APPLICATION            =
+=============================================*/
+
+angular.element(document).ready(function () {
+  angular.bootstrap(document, ['gapStoreApp']);
+});
+

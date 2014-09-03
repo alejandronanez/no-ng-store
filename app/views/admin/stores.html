@@ -1,5 +1,5 @@
 <header>
-  <h1>Stores</h1>
+  <h1>Stores {{name}}</h1>
 </header>
 <div class="table-responsive">
   <table class="table table-striped">
@@ -11,38 +11,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1,001</td>
-        <td>Lorem ipsum dolor</td>
-        <td>Street 34 # 32 - 123 Apt 2300</td>
-        <td><a href="#/stores/1">View</a></td>
-        <td><a href="#/stores/1/edit">Edit</a></td>
-        <td><a href="/#">Delete</a></td>
-      </tr>
-      <tr>
-        <td>1,002</td>
-        <td>Lorem ipsum dolor</td>
-        <td>Street 34 # 32 - 123 Apt 2300</td>
-        <td><a href="#/stores/1">View</a></td>
-        <td><a href="#/stores/1/edit">Edit</a></td>
-        <td><a href="/#">Delete</a></td>
-      </tr>
-      <tr>
-        <td>1,003</td>
-        <td>Lorem ipsum dolor</td>
-        <td>Street 34 # 32 - 123 Apt 2300</td>
-        <td><a href="#/stores/1">View</a></td>
-        <td><a href="#/stores/1/edit">Edit</a></td>
-        <td><a href="/#">Delete</a></td>
-      </tr>
-      <tr>
-        <td>1,004</td>
-        <td>Lorem ipsum dolor</td>
-        <td>Street 34 # 32 - 123 Apt 2300</td>
-        <td><a href="#/stores/1">View</a></td>
-        <td><a href="#/stores/1/edit">Edit</a></td>
-        <td><a href="/#">Delete</a></td>
+      <tr ng-repeat="store in stores">
+        <td>{{ store.id }}</td>
+        <td>{{ store.name }}</td>
+        <td>{{ store.address }}</td>
+        <td><a href="#/stores/{{ store.id }}">View</a></td>
+        <td><a href="#/stores/{{ store.id }}/edit">Edit</a></td>
+        <td><a href="#/" ng-click="delete(store)">Delete</a></td>
       </tr>
     </tbody>
   </table>
 </div>
+<a href="#/stores/new" class="btn btn-block btn-success">Create store</a>
