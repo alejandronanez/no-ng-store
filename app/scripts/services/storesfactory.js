@@ -112,7 +112,7 @@ angular.module('gapStoreApp')
           storeId = value;
         },
         /**
-         * Do update
+         * Do update on a single store
          * @param  {String} key  Element key
          * @param  {Array} data  Element data to be updated
          * @public
@@ -153,6 +153,16 @@ angular.module('gapStoreApp')
           actualData[recordIndex]['products'][productIndex]['total_in_shelf'] = data['total_in_shelf'];
           actualData[recordIndex]['products'][productIndex]['total_in_vault'] = data['total_in_vault'];
           localstorageFactory.set('stores', actualData);
+        },
+        /**
+         * Update all products for a store
+         * @param {Array} products New products
+         * @param {Number} store_id Store index
+         */
+        updateProducts = function (products, store_id) {
+          var actualData = localstorageFactory.get('stores');
+          actualData[findRecord(store_id, actualData)]['products'] = products;
+          localstorageFactory.set('stores', actualData);
         };
 
     // Public API here
@@ -166,7 +176,8 @@ angular.module('gapStoreApp')
       setStoreId: setStoreId,
       updateStore: updateStore,
       updateStores: updateStores,
-      updateProduct: updateProduct
+      updateProduct: updateProduct,
+      updateProducts: updateProducts
     };
 
   });

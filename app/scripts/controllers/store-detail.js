@@ -10,17 +10,16 @@
 angular.module('gapStoreApp')
   .controller('StoreDetailCtrl', function ($scope, $routeParams, storesFactory, $location) {
 
-    var storeId = $routeParams['id'];
+    var storeId = parseInt($routeParams['id']);
+    
+    $scope.stores = storesFactory.getStores();
     $scope.store = storesFactory.getStore(storeId);
-    $scope.products = $scope.store['products'];
-
-    $scope.createProduct = function (id) {
-      storesFactory.setStoreId(id);
-      $location.path('/products/new');
-    };
 
     $scope.delete = function (product) {
-      confirm('Would you like to delete ' + store.name + '?');
+      if (confirm('Would you like to delete ' + product.name + '?') ) {
+        $scope.store['products'].splice($scope.store['products'].indexOf(product), 1);
+        storesFactory.updateProducts($scope.store['products'], storeId);
+      }
     };
 
   });
