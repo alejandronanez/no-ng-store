@@ -8,7 +8,7 @@
  * Factory in the gapStoreApp.
  */
 angular.module('gapStoreApp')
-  .factory('storesFactory', function (localstorageFactory, idFactory) {
+  .factory('storesFactory', ['localstorageFactory', 'idFactory', function (localstorageFactory, idFactory) {
 
     var storeId;
 
@@ -180,4 +180,4 @@ angular.module('gapStoreApp')
       updateProducts: updateProducts
     };
 
-  });
+  }]);

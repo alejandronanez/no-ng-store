@@ -8,7 +8,7 @@
  * Controller of the gapStoreApp
  */
 angular.module('gapStoreApp')
-  .controller('ProductsNewCtrl', function ($scope, storesFactory, $location, $routeParams) {
+  .controller('ProductsNewCtrl', ['$scope', 'storesFactory', '$location', '$routeParams', function ($scope, storesFactory, $location, $routeParams) {
 
     if (!$routeParams['store_id']) {
       $location.path('/');
@@ -38,4 +38,4 @@ angular.module('gapStoreApp')
         $location.path('/stores/' + storeId);
       }
     };
-  });
+  }]);
