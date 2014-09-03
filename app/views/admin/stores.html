@@ -1,7 +1,10 @@
 <header>
   <h1>Stores {{name}}</h1>
 </header>
-<div class="table-responsive">
+<div class="jumbotron" ng-hide="stores.length ">
+  <h3>No stores...yet!</h3>
+</div>
+<div ng-show="stores.length" class="table-responsive">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -17,7 +20,7 @@
         <td>{{ store.address }}</td>
         <td><a href="#/stores/{{ store.id }}">View</a></td>
         <td><a href="#/stores/{{ store.id }}/edit">Edit</a></td>
-        <td><a href="#/" ng-click="delete(store)">Delete</a></td>
+        <td><a href ng-click="delete(store)">Delete</a></td>
       </tr>
     </tbody>
   </table>

@@ -1,10 +1,10 @@
 <header>
   <h1>{{ store.name }}<br><small>{{ store.address }}</small></h1>
 </header>
-<div class="jumbotron" ng-hide="products.length ">
+<div class="jumbotron" ng-hide="store.products.length ">
   <h3>No products...yet!</h3>
 </div>
-<div ng-show="products.length" class="table-responsive">
+<div ng-show="store.products.length" class="table-responsive">
   <h2>Products</h2>
   <table class="table table-striped">
     <thead>
@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="product in products">
+      <tr ng-repeat="product in store.products">
         <td>{{ product.id }}</td>
         <td>{{ product.name }}</td>
         <td>{{ product.description }}</td>
@@ -27,9 +27,10 @@
         <td>{{ product.total_in_vault }}</td>
         <td><a href="#/stores/{{ product.store_id }}/products/{{ product.id }}">View</a></td>
         <td><a href="#/stores/{{ product.store_id }}/products/{{ product.id }}/edit">Edit</a></td>
-        <td><a href="#/" ng-click="delete(product.id)">Delete</a></td>
+        <td><a href ng-click="delete(product)">Delete</a></td>
       </tr>
     </tbody>
   </table>
 </div>
-<button class="btn btn-block btn-success" ng-click="createProduct(store.id)">Create product</button>
+<a href="#/stores/{{ store.id }}/products/new" class="btn btn-block btn-success">Create product</a>
+<a href="#/stores" class="btn btn-block btn-danger">Go back to all stores</a>

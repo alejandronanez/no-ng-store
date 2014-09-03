@@ -8,22 +8,18 @@
  * Controller of the gapStoreApp
  */
 angular.module('gapStoreApp')
-  .controller('ProductsNewCtrl', function ($scope, storesFactory, $location) {
+  .controller('ProductsNewCtrl', function ($scope, storesFactory, $location, $routeParams) {
+
+    if (!$routeParams['store_id']) {
+      $location.path('/');
+    }
     
-    var storeId = 0;
-
-    /**
-     * Check if the Store Id has been set from the previous route
-     */
-    $scope.$on('$routeChangeSuccess', function (e, current, pre) {
-      if (!storesFactory.getStoreId()) {
-        $location.path('/');
-      } else {
-        storeId = storesFactory.getStoreId();
-      }
-    });
-
+    var storeId = $routeParams['store_id'];
     $scope.store = storesFactory.getStore(storeId);
+
+    if (!$scope.store) {
+      $location.path('/');
+    }
 
     /**
      * Create a new product
@@ -42,7 +38,4 @@ angular.module('gapStoreApp')
         $location.path('/stores/' + storeId);
       }
     };
-
-
-
   });
