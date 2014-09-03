@@ -8,16 +8,26 @@
  * Controller of the gapStoreApp
  */
 angular.module('gapStoreApp')
-  .controller('ProductsEditCtrl', function ($scope) {
-    
-  	$scope.product = {
-      'id': 1,
-      'name': 'Product name',
-      'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto sequi numquam, doloribus illum quod totam minus possimus minima, vel ipsa necessitatibus culpa dolorem unde natus ex. Quae ipsa error magnam.',
-      'price': 100,
-      'total_in_shelf': 100,
-      'total_in_vault': 100,
-      'store_id': 1
-    }
-    
+  .controller('ProductsEditCtrl', function ($scope, storesFactory, $routeParams, $location) {
+    $scope.product = storesFactory.getProduct($routeParams.store_id, $routeParams.id);
+
+    $scope.update = function () {
+      if ($scope.product.form.$valid) {
+        
+        var data = storesFactory.updateProduct({
+          id: $routeParams.id,
+          store_id: $routeParams.store_id
+        }, {
+          name: $scope.product.name,
+          description: $scope.product.description,
+          price: $scope.product.price,
+          total_in_shelf: $scope.product.total_in_shelf,
+          total_in_vault: $scope.product.total_in_vault
+        });
+
+        $location.path('/products/' + $routeParams.store_id);
+      }
+    };
+
+
   });

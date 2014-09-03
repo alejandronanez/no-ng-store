@@ -58,8 +58,8 @@ angular.module('gapStoreApp')
           }
         },
         getProduct = function (store_id, product_id) {
-          var actualData = localstorageFactory.get('stores');
-              var store = actualData[findRecord(store_id, actualData)];
+          var actualData = localstorageFactory.get('stores'),
+              store = actualData[findRecord(store_id, actualData)];
 
               return store['products'][findRecord(product_id, store['products'], 'id')];
         },
@@ -103,6 +103,24 @@ angular.module('gapStoreApp')
           actualData[recordIndex]['address'] = data['address'];
 
           localstorageFactory.set('stores', actualData);
+        },
+        /**
+         * Do update on the product
+         * @param  {String} key  Element key
+         * @param  {Array} data  Element data to be updated
+         */
+        updateProduct = function (keys, data) {
+          var actualData = localstorageFactory.get('stores'),
+              store = actualData[findRecord(keys['store_id'], actualData)],
+              productIndex = store['products'].indexOf(store['products'][findRecord(keys['id'], store['products'], 'id')]),
+              recordIndex = findRecord(keys['store_id'], actualData);
+
+          actualData[recordIndex]['products'][productIndex]['name'] = data['name'];
+          actualData[recordIndex]['products'][productIndex]['description'] = data['description'];
+          actualData[recordIndex]['products'][productIndex]['price'] = data['price'];
+          actualData[recordIndex]['products'][productIndex]['total_in_shelf'] = data['total_in_shelf'];
+          actualData[recordIndex]['products'][productIndex]['total_in_vault'] = data['total_in_vault'];
+          localstorageFactory.set('stores', actualData);
         };
 
     // Public API here
@@ -113,7 +131,8 @@ angular.module('gapStoreApp')
       getStore: getStore,
       getStoreId: getStoreId,
       setStoreId: setStoreId,
-      updateStore: updateStore
+      updateStore: updateStore,
+      updateProduct: updateProduct
     };
 
   });
