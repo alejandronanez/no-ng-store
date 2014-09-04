@@ -1,16 +1,22 @@
 <header>
-    <h1>{{ store.name }}<br><small>{{ store.address }}</small></h1>
+  <h1>{{ store.name }}<br><small>{{ store.address }}</small></h1>
 </header>
 <h3>{{ product.name }}</h3>
 <dl>
-    <dt>Price</dt>
-    <dd>{{ product.price }}</dd>
-    <dt>Total in shelf</dt>
-    <dd>{{ product.total_in_shelf }}</dd>
-    <dt>Total in vault</dt>
-    <dd>{{ product.total_in_vault }}</dd>
-    <dt>Description</dt>
-    <dd>{{ product.description }}</dd>
+  <dt>Price</dt>
+  <dd>{{ product.price | currency }}</dd>
+  <dt>Total in shelf</dt>
+  <dd>{{ product.total_in_shelf }}</dd>
+  <dt>Description</dt>
+  <dd>{{ product.description }}</dd>
 </dl>
 
+<form role="form" name="cart.buy" ng-submit="addToCart(product)">
+  <div class="form-group required">
+    <label class="control-label" for="shelf">How many {{ product.name }} you need</label>
+    <select class="form-control" id="shelf" ng-model="total_bought" ng-options="total for total in [] | range:1:product.total_in_shelf" required></select>
+  </div>
+  <button type="submit" class="btn btn-block btn-success" ng-disabled="!product.total_in_shelf">Add to cart</button>
+</form>
+<br>
 <a href="#/shopping-cart/stores" class="btn btn-block btn-danger">Go back to stores list</a>

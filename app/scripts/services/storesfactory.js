@@ -137,7 +137,7 @@ angular.module('gapStoreApp')
         },
         /**
          * Do update on the product
-         * @param  {String} key  Element key
+         * @param  {Object} key  Element key, contains 'store_id' and 'id'
          * @param  {Array} data  Element data to be updated
          * @public
          */
