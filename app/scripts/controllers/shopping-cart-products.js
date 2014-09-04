@@ -8,7 +8,7 @@
  * Controller of the gapStoreApp
  */
 angular.module('gapStoreApp')
-  .controller('ShoppingCartProductsCtrl', ['$scope', '$routeParams', 'storesFactory', 'shoppingCartFactory', function ($scope, $routeParams, storesFactory, shoppingCartFactory) {
+  .controller('ShoppingCartProductsCtrl', ['$scope', '$routeParams', 'storesFactory', 'shoppingCartFactory', '$location', function ($scope, $routeParams, storesFactory, shoppingCartFactory, $location) {
     var promisse = storesFactory.getProduct($routeParams['store_id'], $routeParams['id']),
         promisseStore = storesFactory.getStore($routeParams['store_id']);
 
@@ -27,16 +27,17 @@ angular.module('gapStoreApp')
         // update products
         $scope.product['total_in_shelf'] -= $scope.total_bought;
         productPromisse = storesFactory.updateProduct({
-          'store_id': $routeParams['store_id'],
-          'id': $routeParams['id'],
+          'store_id': parseInt($routeParams['store_id']),
+          'id': parseInt($routeParams['id']),
         }, $scope.product);
 
         productPromisse.then(function () {
           // update cart
-          cartData['id'] = $routeParams['id'];
-          cartData['store_id'] = $routeParams['store_id'];
+          cartData['id'] = parseInt($routeParams['id']);
+          cartData['store_id'] = parseInt($routeParams['store_id']);
           cartData['qty'] = $scope.total_bought;
           shoppingCartFactory.updateCart(cartData);
+          $location.path('/shopping-cart/stores/' + $scope.store.id);
         });
 
       }
