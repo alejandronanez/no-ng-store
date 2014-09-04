@@ -8,7 +8,7 @@
  * Factory in the gapStoreApp.
  */
 angular.module('gapStoreApp')
-  .factory('storesFactory', ['localstorageFactory', 'idFactory', function (localstorageFactory, idFactory) {
+  .factory('storesFactory', ['localstorageFactory', 'idFactory', '$q', function (localstorageFactory, idFactory, $q) {
 
     var storeId;
 
@@ -101,7 +101,11 @@ angular.module('gapStoreApp')
          * @return {Array} All stores array
          */
         getStores = function () {
-          return localstorageFactory.get('stores');
+          var deferred = $q.defer();
+
+          deferred.resolve(localstorageFactory.get('stores'));
+
+          return deferred.promise;
         },
         /**
          * Set storeId

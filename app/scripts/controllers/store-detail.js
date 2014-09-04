@@ -10,9 +10,13 @@
 angular.module('gapStoreApp')
   .controller('StoreDetailCtrl', ['$scope', '$routeParams', 'storesFactory', '$location', function ($scope, $routeParams, storesFactory, $location) {
 
-    var storeId = parseInt($routeParams['id']);
+    var storeId = parseInt($routeParams['id']),
+        promisse = storesFactory.getStores();
     
-    $scope.stores = storesFactory.getStores();
+    promisse.then(function (data) {
+      $scope.stores = data;
+    });
+    
     $scope.store = storesFactory.getStore(storeId);
 
     $scope.delete = function (product) {
