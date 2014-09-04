@@ -43,7 +43,10 @@ angular.module('gapStoreApp')
 
           // Get all products on cart
           _.each(cart, function (element) {
-            finalArray.push( _.extend(element, _.where(result, { 'id': parseInt(element['id']), 'store_id': element['store_id'] }) ) );
+            finalArray.push( _.extend(element,
+              _.where(result, { 'id': parseInt(element['id']), 'store_id': parseInt(element['store_id']) })
+              )
+            );
           });
 
           return finalArray;

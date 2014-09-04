@@ -22,21 +22,23 @@ angular.module('gapStoreApp')
 
     $scope.addToCart = function (product) {
       if ($scope.cart.buy.$valid) {
-        var cartData = {};
-
+        var cartData = {},
+            productPromisse;
         // update products
         $scope.product['total_in_shelf'] -= $scope.total_bought;
-        storesFactory.updateProduct({
+        productPromisse = storesFactory.updateProduct({
           'store_id': $routeParams['store_id'],
           'id': $routeParams['id'],
         }, $scope.product);
 
-        // update cart
-        cartData['id'] = $routeParams['id'];
-        cartData['store_id'] = $routeParams['store_id'];
-        cartData['qty'] = $scope.total_bought;
+        productPromisse.then(function () {
+          // update cart
+          cartData['id'] = $routeParams['id'];
+          cartData['store_id'] = $routeParams['store_id'];
+          cartData['qty'] = $scope.total_bought;
+          shoppingCartFactory.updateCart(cartData);
+        });
 
-        shoppingCartFactory.updateCart(cartData);
       }
     }
 

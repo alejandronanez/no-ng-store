@@ -17,19 +17,21 @@ angular.module('gapStoreApp')
 
     $scope.update = function () {
       if ($scope.productForm.$valid) {
-        
-        var data = storesFactory.updateProduct({
-          id: $routeParams.id,
-          store_id: $routeParams.store_id
-        }, {
-          name: $scope.product.name,
-          description: $scope.product.description,
-          price: $scope.product.price,
-          total_in_shelf: $scope.product.total_in_shelf,
-          total_in_vault: $scope.product.total_in_vault
-        });
-
+        var promisse = storesFactory.updateProduct({
+            id: $routeParams.id,
+            store_id: $routeParams.store_id
+          }, {
+            name: $scope.product.name,
+            description: $scope.product.description,
+            price: $scope.product.price,
+            total_in_shelf: $scope.product.total_in_shelf,
+            total_in_vault: $scope.product.total_in_vault
+          });
+      
+      promisse.then(function () {
         $location.path('/stores/' + $routeParams.store_id);
+      });
+
       }
     };
 

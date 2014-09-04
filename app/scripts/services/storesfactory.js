@@ -149,14 +149,17 @@ angular.module('gapStoreApp')
           var actualData = localstorageFactory.get('stores'),
               store = actualData[findRecord(keys['store_id'], actualData)],
               productIndex = store['products'].indexOf(store['products'][findRecord(keys['id'], store['products'], 'id')]),
-              recordIndex = findRecord(keys['store_id'], actualData);
+              recordIndex = findRecord(keys['store_id'], actualData),
+              deferred = $q.defer();
 
           actualData[recordIndex]['products'][productIndex]['name'] = data['name'];
           actualData[recordIndex]['products'][productIndex]['description'] = data['description'];
           actualData[recordIndex]['products'][productIndex]['price'] = data['price'];
           actualData[recordIndex]['products'][productIndex]['total_in_shelf'] = data['total_in_shelf'];
           actualData[recordIndex]['products'][productIndex]['total_in_vault'] = data['total_in_vault'];
-          localstorageFactory.set('stores', actualData);
+          deferred.resolve(localstorageFactory.set('stores', actualData));
+
+          return deferred.promise;
         },
         /**
          * Update all products for a store
