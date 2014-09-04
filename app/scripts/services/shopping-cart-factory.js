@@ -25,6 +25,30 @@ angular.module('gapStoreApp')
           return localstorageFactory.get('cart');
         },
         /**
+         * Get the cart for checkout
+         * @return {[type]} [description]
+         */
+        getCartCheckout = function () {
+          var cart = getCart(),
+              finalArray = [],
+              result = [],
+              products = getAllProducts();
+
+          // get all products
+          _.each(products, function (element, index, list) {
+            _.each(element['products'], function (element2, index2, list2) {
+              result.push(element2);
+            });
+          });
+
+          // Get all products on cart
+          _.each(cart, function (element) {
+            finalArray.push( _.extend(element, _.where(result, { 'id': parseInt(element['id']), 'store_id': element['store_id'] }) ) );
+          });
+
+          return finalArray;
+        },
+        /**
          * Update the cart
          * @param  {Object} data Data from the from with the qty of the element
          */
@@ -58,6 +82,7 @@ angular.module('gapStoreApp')
     // Public API here
     return {
       getAllProducts: getAllProducts,
+      getCartCheckout: getCartCheckout,
       updateCart: updateCart
     };
   }]);

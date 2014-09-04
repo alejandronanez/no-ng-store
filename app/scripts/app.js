@@ -48,10 +48,9 @@ angular
         templateUrl: 'views/admin/product-detail.html',
         controller: 'ProductDetailCtrl'
       })
-      .when('/testing', {
-        templateUrl: 'views/testing.html',
-        controller: 'TestingCtrl'
-      })
+      /*============================================
+      =            Shopping Cart Routes            =
+      ============================================*/
       .when('/shopping-cart', {
         templateUrl: 'views/public/shopping-cart.html',
         controller: 'ShoppingCartCtrl'
@@ -63,6 +62,10 @@ angular
       .when('/shopping-cart/stores/:store_id/products/:id', {
         templateUrl: 'views/public/shopping-cart-products.html',
         controller: 'ShoppingCartProductsCtrl'
+      })
+      .when('/shopping-cart/my-cart', {
+        templateUrl: 'views/public/my-cart.html',
+        controller: 'MyCartCtrl'
       })
       .otherwise({
         redirectTo: '/'
