@@ -11,10 +11,8 @@ angular.module('gapStoreApp')
   .controller('StoresCtrl', ['$scope', 'storesFactory', function ($scope, storesFactory) {
     
     var promisse = storesFactory.getStores();
-    
-    promisse.then(function (data) {
-      $scope.stores = data;
-    });
+
+    promisse.then(function (data) { $scope.stores = data; });
 
     $scope.delete = function (store) {
       if ( confirm('Would you like to delete the store: ' + store.name + '?') ) {

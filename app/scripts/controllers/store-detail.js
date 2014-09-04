@@ -13,9 +13,7 @@ angular.module('gapStoreApp')
     var storeId = parseInt($routeParams['id']),
         promisse = storesFactory.getStores();
     
-    promisse.then(function (data) {
-      $scope.stores = data;
-    });
+    promisse.then(function (data) { $scope.stores = data; });
     
     $scope.store = storesFactory.getStore(storeId);
 
