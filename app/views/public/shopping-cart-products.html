@@ -11,12 +11,13 @@
   <dd>{{ product.description }}</dd>
 </dl>
 
-<form role="form" name="cart.buy" ng-submit="addToCart(product)">
-  <div class="form-group required">
+<form role="form" name="cartAdd" ng-submit="addToCart(product)" novalidate>
+  <div class="form-group required" ng-class="{ 'has-error' : cartAdd.name.$invalid && !cartAdd.name.$pristine }">
     <label class="control-label" for="shelf">How many {{ product.name }} you need</label>
-    <select class="form-control" id="shelf" ng-model="total_bought" ng-options="total for total in [] | range:1:product.total_in_shelf" required></select>
+    <select class="form-control" id="shelf" name="total_bought" ng-model="total_bought" ng-options="total for total in [] | range:1:product.total_in_shelf" required></select>
+    <p ng-show="cartAdd.name.$invalid && !cartAdd.name.$pristine" class="help-block">Store name is required.</p>
   </div>
-  <button type="submit" class="btn btn-block btn-success" ng-disabled="!product.total_in_shelf">Add to cart</button>
+  <button type="submit" class="btn btn-block btn-success" ng-disabled="cartAdd.$invalid">Add to cart</button>
 </form>
 <br>
 <a href="#/shopping-cart/stores" class="btn btn-block btn-danger">Go back to stores list</a>

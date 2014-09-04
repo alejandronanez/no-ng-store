@@ -21,7 +21,7 @@ angular.module('gapStoreApp')
     })
 
     $scope.addToCart = function (product) {
-      if ($scope.cart.buy.$valid) {
+      if ($scope.cartAdd.$valid) {
         var cartData = {},
             productPromisse;
         // update products
