@@ -8,7 +8,7 @@
  * Controller of the gapStoreApp
  */
 angular.module('gapStoreApp')
-  .controller('StoresCtrl', function ($scope, storesFactory) {
+  .controller('StoresCtrl', ['$scope', 'storesFactory', function ($scope, storesFactory) {
     
     $scope.stores = storesFactory.getStores();
 
@@ -19,4 +19,4 @@ angular.module('gapStoreApp')
       }
     };
 
-  });
+  }]);

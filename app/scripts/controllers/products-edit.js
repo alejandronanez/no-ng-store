@@ -8,7 +8,7 @@
  * Controller of the gapStoreApp
  */
 angular.module('gapStoreApp')
-  .controller('ProductsEditCtrl', function ($scope, storesFactory, $routeParams, $location) {
+  .controller('ProductsEditCtrl', ['$scope', 'storesFactory', '$routeParams', '$location', function ($scope, storesFactory, $routeParams, $location) {
     $scope.product = storesFactory.getProduct($routeParams.store_id, $routeParams.id);
 
     $scope.update = function () {
@@ -30,4 +30,4 @@ angular.module('gapStoreApp')
     };
 
 
-  });
+  }]);

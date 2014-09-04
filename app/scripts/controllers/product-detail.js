@@ -8,6 +8,6 @@
  * Controller of the gapStoreApp
  */
 angular.module('gapStoreApp')
-  .controller('ProductDetailCtrl', function ($scope, storesFactory, $routeParams) {
+  .controller('ProductDetailCtrl', ['$scope', 'storesFactory', '$routeParams', function ($scope, storesFactory, $routeParams) {
     $scope.product = storesFactory.getProduct($routeParams.store_id, $routeParams.id);
-  });
+  }]);

@@ -8,7 +8,7 @@
  * Factory in the gapStoreApp.
  */
 angular.module('gapStoreApp')
-  .factory('storesFactory', function (localstorageFactory, idFactory) {
+  .factory('storesFactory', ['localstorageFactory', 'idFactory', function (localstorageFactory, idFactory) {
 
     var storeId;
 
@@ -137,7 +137,7 @@ angular.module('gapStoreApp')
         },
         /**
          * Do update on the product
-         * @param  {String} key  Element key
+         * @param  {Object} key  Element key, contains 'store_id' and 'id'
          * @param  {Array} data  Element data to be updated
          * @public
          */
@@ -180,4 +180,4 @@ angular.module('gapStoreApp')
       updateProducts: updateProducts
     };
 
-  });
+  }]);

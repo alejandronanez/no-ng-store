@@ -8,7 +8,7 @@
  * Controller of the gapStoreApp
  */
 angular.module('gapStoreApp')
-  .controller('StoreDetailCtrl', function ($scope, $routeParams, storesFactory, $location) {
+  .controller('StoreDetailCtrl', ['$scope', '$routeParams', 'storesFactory', '$location', function ($scope, $routeParams, storesFactory, $location) {
 
     var storeId = parseInt($routeParams['id']);
     
@@ -22,4 +22,4 @@ angular.module('gapStoreApp')
       }
     };
 
-  });
+  }]);

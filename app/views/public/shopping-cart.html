@@ -1,0 +1,7 @@
+<header>
+  <h1>Let's shop something<br><small>Please select one store</small></h1>
+</header>
+
+<div class="list-group">
+  <a ng-repeat="store in stores" href="#/shopping-cart/stores/{{ store.id }}" class="list-group-item">{{ store.name }} -  <em class="text-muted">{{ store.address }}</em></a>
+</div>

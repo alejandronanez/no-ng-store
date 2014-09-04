@@ -1,0 +1,29 @@
+<header>
+  <h1>My shopping cart!</h1>
+</header>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>QTY</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in cartItems">
+        <td>{{ item[0].name }}</td>
+        <td>{{ item.qty }}</td>
+        <td>{{ item[0].price | currency }}</td>
+        <td>{{ item[0].price * item.qty | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 class="text-right">TOTAL: {{ getTotal() | currency }}</h3>
+
+<div class="list-group">
+  <a ng-repeat="product in products" href="#/shopping-cart/stores/{{ store.id }}" class="list-group-item">{{ store.name }} -  <em class="text-muted">{{ store.address }}</em></a>
+</div>
