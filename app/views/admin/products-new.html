@@ -1,27 +1,32 @@
 <header>
   <h1>Create product</h1>
 </header>
-<form role="form" name="product.form" ng-submit="create()">
-  <div class="form-group required">
+<form role="form" name="createProduct" ng-submit="create()" novalidate>
+  <div class="form-group required" ng-class="{ 'has-error' : createProduct.name.$invalid && !createProduct.name.$pristine }">
     <label class="control-label" for="product-name">Name</label>
-    <input type="text" class="form-control" name="product.name" id="product-name" placeholder="Product name" ng-model="product.name" required>
+    <input type="text" class="form-control" name="name" id="product-name" placeholder="Product name" ng-model="name" required>
+    <p ng-show="createProduct.name.$invalid && !createProduct.name.$pristine" class="help-block">Product name is required.</p>
   </div>
-  <div class="form-group required">
+  <div class="form-group required" ng-class="{ 'has-error' : createProduct.description.$invalid && !createProduct.description.$pristine }">
     <label class="control-label" for="product-description">Description</label>
-    <textarea class="form-control" name="product.description" id="product-description" placeholder="Product description" ng-model="product.description" required></textarea>
+    <textarea class="form-control" name="description" id="product-description" placeholder="Product description" ng-model="description" ng-minlength="10"></textarea>
+    <p ng-show="createProduct.description.$error.minlength" class="help-block">Product description is too short.</p>
   </div>
-  <div class="form-group required">
+  <div class="form-group required" ng-class="{ 'has-error' : createProduct.price.$invalid && !createProduct.price.$pristine }">
     <label class="control-label" for="product-price">Price</label>
-    <input type="number" class="form-control" name="product.price" id="product-price" placeholder="Product price" ng-model="product.price" required>
+    <input type="number" class="form-control" name="price" id="product-price" placeholder="Product price" ng-model="price" required>
+    <p ng-show="createProduct.price.$invalid && !createProduct.price.$pristine" class="help-block">Product price is required.</p>
   </div>
-  <div class="form-group required">
+  <div class="form-group required" ng-class="{ 'has-error' : createProduct.total_in_shelf.$invalid && !createProduct.total_in_shelf.$pristine }">
     <label class="control-label" for="product-shelf">Total shelf</label>
-    <input type="number" class="form-control" name="product.total_in_shelf" id="product-shelf" placeholder="Total products in shelf" ng-model="product.total_in_shelf" required>
+    <input type="number" class="form-control" name="total_in_shelf" id="product-shelf" placeholder="Total products in shelf" ng-model="total_in_shelf" required>
+    <p ng-show="createProduct.total_in_shelf.$invalid && !createProduct.total_in_shelf.$pristine" class="help-block">Product total in shelf qty is required.</p>
   </div>
-  <div class="form-group required">
+  <div class="form-group required" ng-class="{ 'has-error' : createProduct.total_in_vault.$invalid && !createProduct.total_in_vault.$pristine }">
     <label class="control-label" for="product-shelf">Total vault</label>
-    <input type="number" class="form-control" name="product.total_in_vault" id="product-vault" placeholder="Total products in vault" ng-model="product.total_in_vault" required>
+    <input type="number" class="form-control" name="total_in_vault" id="product-vault" placeholder="Total products in vault" ng-model="total_in_vault" required>
+    <p ng-show="createProduct.total_in_vault.$invalid && !createProduct.total_in_vault.$pristine" class="help-block">Product total in vault qty is required.</p>
   </div>
-  <button type="submit" class="btn btn-block btn-success">Create product</button>
+  <button type="submit" class="btn btn-block btn-success" ng-disabled="createProduct.$invalid">Create product</button>
   <a href="#/stores/{{ product.store_id }}" class="btn btn-block btn-danger">Go back</a>
 </form>
