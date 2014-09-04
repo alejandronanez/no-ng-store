@@ -18,7 +18,7 @@ angular.module('gapStoreApp')
     });
 
     $scope.update = function () {
-      if ($scope.storeEdit.$valid) {
+      if ($scope.editStore.$valid) {
         var promisse = storesFactory.updateStore(storeId, {
             name: $scope.store.name,
             address: $scope.store.address
