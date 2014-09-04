@@ -20,7 +20,8 @@ angular.module('gapStoreApp')
     $scope.delete = function (product) {
       if (confirm('Would you like to delete ' + product.name + '?') ) {
         $scope.store['products'].splice($scope.store['products'].indexOf(product), 1);
-        storesFactory.updateProducts($scope.store['products'], storeId);
+        var promisse = storesFactory.updateProducts($scope.store['products'], storeId);
+        promisse.then(function () {});
       }
     };
 

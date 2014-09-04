@@ -149,9 +149,13 @@ angular.module('gapStoreApp')
          * @param {Number} store_id Store index
          */
         updateProducts = function (products, store_id) {
-          var actualData = localstorageFactory.get('stores');
+          var actualData = localstorageFactory.get('stores'),
+              deferred = $q.defer();
+
           actualData[findRecord(store_id, actualData)]['products'] = products;
-          localstorageFactory.set('stores', actualData);
+          deferred.resolve(localstorageFactory.set('stores', actualData));
+
+          return deferred.promise;
         };
 
     // Public API here
