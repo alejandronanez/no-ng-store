@@ -16,7 +16,8 @@ angular.module('gapStoreApp')
     });
 
     $scope.update = function () {
-      if ($scope.productForm.$valid) {
+      if ($scope.editProduct.$valid) {
+        debugger;
         var promisse = storesFactory.updateProduct({
             id: $routeParams.id,
             store_id: $routeParams.store_id

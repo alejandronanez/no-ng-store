@@ -14,13 +14,15 @@ angular.module('gapStoreApp')
      * Create a store in localstorage
      */
     $scope.create = function () {
-      if ($scope.store.form.$valid) {
+      if ($scope.createStore.$valid) {
         var promisse = storesFactory.createStore({
-              name: $scope.store.name,
-              address: $scope.store.address
+              name: $scope.name,
+              address: $scope.address
             });
 
-        promisse.then(function () { $location.path('/'); });
+        promisse.then(function () {
+          $location.path('/');
+        });
       }
     };
 

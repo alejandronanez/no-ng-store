@@ -25,18 +25,17 @@ angular.module('gapStoreApp')
       }
     });
     
-
     /**
      * Create a new product
      */
     $scope.create = function () {
-      if ($scope.product.form.$valid) {
+      if ($scope.createProduct.$valid) {
         var promisse = storesFactory.createProduct({
-          name: $scope.product.name,
-          description: $scope.product.description,
-          price: $scope.product.price,
-          total_in_shelf: $scope.product.total_in_shelf,
-          total_in_vault: $scope.product.total_in_vault,
+          name: $scope.name,
+          description: $scope.description,
+          price: $scope.price,
+          total_in_shelf: $scope.total_in_shelf,
+          total_in_vault: $scope.total_in_vault,
           store_id: storeId
         });
 
