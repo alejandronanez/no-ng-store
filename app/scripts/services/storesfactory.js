@@ -73,9 +73,12 @@ angular.module('gapStoreApp')
         },
         getProduct = function (store_id, product_id) {
           var actualData = localstorageFactory.get('stores'),
-              store = actualData[findRecord(store_id, actualData)];
+              store = actualData[findRecord(store_id, actualData)],
+              deferred = $q.defer();
 
-              return store['products'][findRecord(product_id, store['products'], 'id')];
+              deferred.resolve(store['products'][findRecord(product_id, store['products'], 'id')]);
+
+              return deferred.promise;
         },
         /**
          * Get individual Store

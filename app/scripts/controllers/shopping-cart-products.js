@@ -9,8 +9,16 @@
  */
 angular.module('gapStoreApp')
   .controller('ShoppingCartProductsCtrl', ['$scope', '$routeParams', 'storesFactory', 'shoppingCartFactory', function ($scope, $routeParams, storesFactory, shoppingCartFactory) {
-    $scope.product = storesFactory.getProduct($routeParams['store_id'], $routeParams['id']);
-    $scope.store = storesFactory.getStore($routeParams['store_id']);
+    var promisse = storesFactory.getProduct($routeParams['store_id'], $routeParams['id']),
+        promisseStore = storesFactory.getStore($routeParams['store_id']);
+
+    promisse.then(function (data) {
+      $scope.product = data;
+    });
+
+    promisseStore.then(function (data) {
+      $scope.store = data;
+    })
 
     $scope.addToCart = function (product) {
       if ($scope.cart.buy.$valid) {

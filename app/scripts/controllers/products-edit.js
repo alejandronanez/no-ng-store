@@ -9,10 +9,14 @@
  */
 angular.module('gapStoreApp')
   .controller('ProductsEditCtrl', ['$scope', 'storesFactory', '$routeParams', '$location', function ($scope, storesFactory, $routeParams, $location) {
-    $scope.product = storesFactory.getProduct($routeParams.store_id, $routeParams.id);
+    var promisse = storesFactory.getProduct($routeParams.store_id, $routeParams.id);
+    
+    promisse.then(function (data) {
+      $scope.product = data;
+    });
 
     $scope.update = function () {
-      if ($scope.product.form.$valid) {
+      if ($scope.productForm.$valid) {
         
         var data = storesFactory.updateProduct({
           id: $routeParams.id,
