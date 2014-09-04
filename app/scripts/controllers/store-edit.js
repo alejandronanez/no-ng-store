@@ -13,16 +13,21 @@ angular.module('gapStoreApp')
     var storeId = parseInt($routeParams['id']),
         promisse =  storesFactory.getStore(storeId);
 
-    promisse.then(function (data) { $scope.store = data; });
+    promisse.then(function (data) {
+      $scope.store = data;
+    });
 
     $scope.update = function () {
-      if ($scope.store.form.$valid) {
-        var data = storesFactory.updateStore(storeId, {
-              name: $scope.store.name,
-              address: $scope.store.address
-            });
+      if ($scope.storeEdit.$valid) {
+        var promisse = storesFactory.updateStore(storeId, {
+            name: $scope.store.name,
+            address: $scope.store.address
+          });
+
+        promisse.then(function () {
+          $location.path('/stores');  
+        });
         
-        $location.path('/');  
       }
     };
 

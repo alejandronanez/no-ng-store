@@ -117,13 +117,16 @@ angular.module('gapStoreApp')
          */
         updateStore = function (key, data) {
           var actualData = localstorageFactory.get('stores'),
-              recordIndex = 0;
+              recordIndex = 0,
+              deferred = $q.defer();
 
           recordIndex = findRecord(key, actualData);
           actualData[recordIndex]['name'] = data['name'];
           actualData[recordIndex]['address'] = data['address'];
 
-          localstorageFactory.set('stores', actualData);
+          deferred.resolve(localstorageFactory.set('stores', actualData));
+
+          return deferred.promise;
         },
         /**
          * Update all stores
