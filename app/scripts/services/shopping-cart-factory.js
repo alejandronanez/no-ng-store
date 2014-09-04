@@ -24,6 +24,10 @@ angular.module('gapStoreApp')
         getCart = function () {
           return localstorageFactory.get('cart');
         },
+        /**
+         * Update the cart
+         * @param  {Object} data Data from the from with the qty of the element
+         */
         updateCart = function (data) {
           var cart = [],
               tempCart = {},
