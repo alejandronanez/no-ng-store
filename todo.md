@@ -16,11 +16,11 @@
 	- [ ] Delete real data
 
 ## CLIENT
-	- [ ] View Stores
-	- [ ] Store detail
+	- [X] View Stores
+	- [X] Store detail
 	- [ ] Product detail
 		- [ ] Zoom into image
 		- [ ]  Different product images (slider)
-		- [ ] Add product to cart
-	- [ ] Cart
-		- [ ] View cart
+		- [X] Add product to cart
+	- [X] Cart
+		- [X] View cart
