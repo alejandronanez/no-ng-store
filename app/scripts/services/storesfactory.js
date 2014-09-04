@@ -134,7 +134,10 @@ angular.module('gapStoreApp')
          * @param {Object} data Data to update
          */
         updateStores = function (data) {
-          localstorageFactory.set('stores', data);
+          var deferred = $q.defer();
+
+          deferred.resolve(localstorageFactory.set('stores', data));
+          return deferred.promise;
         },
         /**
          * Do update on the product
