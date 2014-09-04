@@ -15,12 +15,12 @@ angular.module('gapStoreApp')
      */
     $scope.create = function () {
       if ($scope.store.form.$valid) {
-        var data = storesFactory.createStore({
+        var promisse = storesFactory.createStore({
               name: $scope.store.name,
               address: $scope.store.address
             });
-        
-        $location.path('/');
+
+        promisse.then(function () { $location.path('/'); });
       }
     };
 

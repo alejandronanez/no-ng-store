@@ -14,19 +14,24 @@ angular.module('gapStoreApp')
       $location.path('/');
     }
     
-    var storeId = $routeParams['store_id'];
-    $scope.store = storesFactory.getStore(storeId);
+    var storeId = parseInt($routeParams['store_id']),
+        promisse =  storesFactory.getStore(storeId);
 
-    if (!$scope.store) {
-      $location.path('/');
-    }
+    promisse.then(function (data) {
+      $scope.store = data;
+      
+      if (!$scope.store) {
+        $location.path('/');
+      }
+    });
+    
 
     /**
      * Create a new product
      */
     $scope.create = function () {
       if ($scope.product.form.$valid) {
-        var data = storesFactory.createProduct({
+        var promisse = storesFactory.createProduct({
           name: $scope.product.name,
           description: $scope.product.description,
           price: $scope.product.price,
@@ -35,7 +40,7 @@ angular.module('gapStoreApp')
           store_id: storeId
         });
 
-        $location.path('/stores/' + storeId);
+        promisse.then(function () { $location.path('/stores/' + storeId); });
       }
     };
   }]);

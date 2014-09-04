@@ -8,9 +8,7 @@
  * Factory in the gapStoreApp.
  */
 angular.module('gapStoreApp')
-  .factory('storesFactory', ['localstorageFactory', 'idFactory', function (localstorageFactory, idFactory) {
-
-    var storeId;
+  .factory('storesFactory', ['localstorageFactory', 'idFactory', '$q', function (localstorageFactory, idFactory, $q) {
 
         /**
          * Create a new store
@@ -18,7 +16,8 @@ angular.module('gapStoreApp')
          * @public
          */
     var createStore = function (data) {
-          var currentValue = [];
+          var currentValue = [],
+              deferred = $q.defer();
 
           if ( localstorageFactory.get('stores') && localstorageFactory.get('stores') instanceof Array ) {
             currentValue = localstorageFactory.get('stores');
@@ -27,7 +26,9 @@ angular.module('gapStoreApp')
           data['id'] = idFactory.getId();
           data['products'] = [];
           currentValue.push(data);
-          return localstorageFactory.set('stores', currentValue);
+
+          deferred.resolve(localstorageFactory.set('stores', currentValue));
+          return deferred.promise;
         },
         /**
          * Create a new product
@@ -37,7 +38,8 @@ angular.module('gapStoreApp')
         createProduct = function (data) {
           var currentValue = [],
               recordIndex = 0,
-              currentProducts = [];
+              currentProducts = [],
+              deferred = $q.defer();
 
           if ( localstorageFactory.get('stores') && localstorageFactory.get('stores') instanceof Array ) {
             currentValue = localstorageFactory.get('stores');
@@ -50,7 +52,8 @@ angular.module('gapStoreApp')
           // Store new products
           currentValue[recordIndex]['products'].push(data);
 
-          return localstorageFactory.set('stores', currentValue);
+          deferred.resolve(localstorageFactory.set('stores', currentValue));
+          return deferred.promise;
         },
         /**
          * Return a record from the 'id' localstorage
@@ -70,17 +73,12 @@ angular.module('gapStoreApp')
         },
         getProduct = function (store_id, product_id) {
           var actualData = localstorageFactory.get('stores'),
-              store = actualData[findRecord(store_id, actualData)];
+              store = actualData[findRecord(store_id, actualData)],
+              deferred = $q.defer();
 
-              return store['products'][findRecord(product_id, store['products'], 'id')];
-        },
-        /**
-         * Return store id
-         * @public
-         * @return {Number} Store ID
-         */
-        getStoreId = function () {
-          return storeId;
+              deferred.resolve(store['products'][findRecord(product_id, store['products'], 'id')]);
+
+              return deferred.promise;
         },
         /**
          * Get individual Store
@@ -90,10 +88,14 @@ angular.module('gapStoreApp')
         getStore = function (key) {
           var currentValue = [],
               recordIndex = 0,
-              actualData = localstorageFactory.get('stores');
+              actualData = localstorageFactory.get('stores'),
+              deferred = $q.defer();
+
           // Find store with the ID
           recordIndex = findRecord(key, actualData);
-          return actualData[recordIndex];
+          deferred.resolve(actualData[recordIndex]);
+
+          return deferred.promise;
         },
         /**
          * Get all stores
@@ -101,15 +103,11 @@ angular.module('gapStoreApp')
          * @return {Array} All stores array
          */
         getStores = function () {
-          return localstorageFactory.get('stores');
-        },
-        /**
-         * Set storeId
-         * @param {Number} value New value for storeId
-         * @public
-         */
-        setStoreId = function (value) {
-          storeId = value;
+          var deferred = $q.defer();
+
+          deferred.resolve(localstorageFactory.get('stores'));
+
+          return deferred.promise;
         },
         /**
          * Do update on a single store
@@ -119,13 +117,16 @@ angular.module('gapStoreApp')
          */
         updateStore = function (key, data) {
           var actualData = localstorageFactory.get('stores'),
-              recordIndex = 0;
+              recordIndex = 0,
+              deferred = $q.defer();
 
           recordIndex = findRecord(key, actualData);
           actualData[recordIndex]['name'] = data['name'];
           actualData[recordIndex]['address'] = data['address'];
 
-          localstorageFactory.set('stores', actualData);
+          deferred.resolve(localstorageFactory.set('stores', actualData));
+
+          return deferred.promise;
         },
         /**
          * Update all stores
@@ -133,7 +134,10 @@ angular.module('gapStoreApp')
          * @param {Object} data Data to update
          */
         updateStores = function (data) {
-          localstorageFactory.set('stores', data);
+          var deferred = $q.defer();
+
+          deferred.resolve(localstorageFactory.set('stores', data));
+          return deferred.promise;
         },
         /**
          * Do update on the product
@@ -145,14 +149,17 @@ angular.module('gapStoreApp')
           var actualData = localstorageFactory.get('stores'),
               store = actualData[findRecord(keys['store_id'], actualData)],
               productIndex = store['products'].indexOf(store['products'][findRecord(keys['id'], store['products'], 'id')]),
-              recordIndex = findRecord(keys['store_id'], actualData);
+              recordIndex = findRecord(keys['store_id'], actualData),
+              deferred = $q.defer();
 
           actualData[recordIndex]['products'][productIndex]['name'] = data['name'];
           actualData[recordIndex]['products'][productIndex]['description'] = data['description'];
           actualData[recordIndex]['products'][productIndex]['price'] = data['price'];
           actualData[recordIndex]['products'][productIndex]['total_in_shelf'] = data['total_in_shelf'];
           actualData[recordIndex]['products'][productIndex]['total_in_vault'] = data['total_in_vault'];
-          localstorageFactory.set('stores', actualData);
+          deferred.resolve(localstorageFactory.set('stores', actualData));
+
+          return deferred.promise;
         },
         /**
          * Update all products for a store
@@ -160,9 +167,13 @@ angular.module('gapStoreApp')
          * @param {Number} store_id Store index
          */
         updateProducts = function (products, store_id) {
-          var actualData = localstorageFactory.get('stores');
+          var actualData = localstorageFactory.get('stores'),
+              deferred = $q.defer();
+
           actualData[findRecord(store_id, actualData)]['products'] = products;
-          localstorageFactory.set('stores', actualData);
+          deferred.resolve(localstorageFactory.set('stores', actualData));
+
+          return deferred.promise;
         };
 
     // Public API here
@@ -172,8 +183,6 @@ angular.module('gapStoreApp')
       getProduct: getProduct,
       getStore: getStore,
       getStores: getStores,
-      getStoreId: getStoreId,
-      setStoreId: setStoreId,
       updateStore: updateStore,
       updateStores: updateStores,
       updateProduct: updateProduct,
