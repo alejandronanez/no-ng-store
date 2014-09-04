@@ -10,8 +10,6 @@
 angular.module('gapStoreApp')
   .factory('storesFactory', ['localstorageFactory', 'idFactory', '$q', function (localstorageFactory, idFactory, $q) {
 
-    var storeId;
-
         /**
          * Create a new store
          * @param  {Object} data Data to be created
@@ -75,14 +73,6 @@ angular.module('gapStoreApp')
               return store['products'][findRecord(product_id, store['products'], 'id')];
         },
         /**
-         * Return store id
-         * @public
-         * @return {Number} Store ID
-         */
-        getStoreId = function () {
-          return storeId;
-        },
-        /**
          * Get individual Store
          * @public
          * @param  {String} key Element key to be retrieved
@@ -106,14 +96,6 @@ angular.module('gapStoreApp')
           deferred.resolve(localstorageFactory.get('stores'));
 
           return deferred.promise;
-        },
-        /**
-         * Set storeId
-         * @param {Number} value New value for storeId
-         * @public
-         */
-        setStoreId = function (value) {
-          storeId = value;
         },
         /**
          * Do update on a single store
@@ -176,8 +158,6 @@ angular.module('gapStoreApp')
       getProduct: getProduct,
       getStore: getStore,
       getStores: getStores,
-      getStoreId: getStoreId,
-      setStoreId: setStoreId,
       updateStore: updateStore,
       updateStores: updateStores,
       updateProduct: updateProduct,
