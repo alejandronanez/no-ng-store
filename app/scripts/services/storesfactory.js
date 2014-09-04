@@ -83,10 +83,14 @@ angular.module('gapStoreApp')
         getStore = function (key) {
           var currentValue = [],
               recordIndex = 0,
-              actualData = localstorageFactory.get('stores');
+              actualData = localstorageFactory.get('stores'),
+              deferred = $q.defer();
+
           // Find store with the ID
           recordIndex = findRecord(key, actualData);
-          return actualData[recordIndex];
+          deferred.resolve(actualData[recordIndex]);
+
+          return deferred.promise;
         },
         /**
          * Get all stores

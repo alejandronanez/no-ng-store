@@ -14,8 +14,10 @@ angular.module('gapStoreApp')
       $location.path('/');
     }
     
-    var storeId = $routeParams['store_id'];
-    $scope.store = storesFactory.getStore(storeId);
+    var storeId = parseInt($routeParams['store_id']),
+        promisse =  storesFactory.getStore(storeId);
+
+    promisse.then(function (data) { $scope.store = data; });
 
     if (!$scope.store) {
       $location.path('/');

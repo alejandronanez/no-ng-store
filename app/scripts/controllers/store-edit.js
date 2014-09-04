@@ -10,8 +10,10 @@
 angular.module('gapStoreApp')
   .controller('StoresEditCtrl', ['$scope', '$routeParams', 'storesFactory', '$location', function ($scope, $routeParams, storesFactory, $location) {
 
-    var storeId = $routeParams['id'];
-    $scope.store = storesFactory.getStore(storeId);
+    var storeId = parseInt($routeParams['id']),
+        promisse =  storesFactory.getStore(storeId);
+
+    promisse.then(function (data) { $scope.store = data; });
 
     $scope.update = function () {
       if ($scope.store.form.$valid) {
