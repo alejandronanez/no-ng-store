@@ -16,7 +16,8 @@ angular.module('gapStoreApp')
          * @public
          */
     var createStore = function (data) {
-          var currentValue = [];
+          var currentValue = [],
+              deferred = $q.defer();
 
           if ( localstorageFactory.get('stores') && localstorageFactory.get('stores') instanceof Array ) {
             currentValue = localstorageFactory.get('stores');
@@ -25,7 +26,9 @@ angular.module('gapStoreApp')
           data['id'] = idFactory.getId();
           data['products'] = [];
           currentValue.push(data);
-          return localstorageFactory.set('stores', currentValue);
+
+          deferred.resolve(localstorageFactory.set('stores', currentValue));
+          return deferred.promise;
         },
         /**
          * Create a new product
