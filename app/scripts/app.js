@@ -13,7 +13,8 @@ angular
     'ngCookies',
     'ngResource',
     'ngRoute',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ImageZoom'
   ])
   .config(function ($routeProvider) {
     $routeProvider

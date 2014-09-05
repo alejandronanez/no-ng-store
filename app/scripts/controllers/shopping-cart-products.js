@@ -22,18 +22,13 @@ angular.module('gapStoreApp')
 
     $scope.slides = [
       {
-        image: 'https://placeimg.com/500/500/people',
+        image: '/images/shoes-1.jpg',
+        imageZoom: '/images/shoes-a-1.jpg',
       },
       {
-        image: 'https://placeimg.com/500/490/people',
-      },
-      {
-        image: 'https://placeimg.com/500/480/people',
-      },
-      {
-        image: 'https://placeimg.com/500/470/people',
+        image: '/images/shoes-1.jpg',
+        imageZoom: '/images/shoes-a-2.jpg',
       }
-
     ];
 
     $scope.addToCart = function (product) {
