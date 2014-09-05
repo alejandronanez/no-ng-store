@@ -32,7 +32,8 @@ angular.module('gapStoreApp')
           var cart = getCart(),
               finalArray = [],
               result = [],
-              products = getAllProducts();
+              products = getAllProducts(),
+              flag = false;
 
           // get all products
           _.each(products, function (element, index, list) {
@@ -52,7 +53,12 @@ angular.module('gapStoreApp')
           for (var i in finalArray) {
             if (!finalArray[i].hasOwnProperty(0)) {
               finalArray.splice(i, 1);
+              flag = true;
             }
+          }
+          
+          if (flag) {
+            localstorageFactory.set('cart', finalArray);
           }
 
           return finalArray;

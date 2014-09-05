@@ -21,7 +21,7 @@ angular.module('gapStoreApp')
             });
 
         promisse.then(function () {
-          $location.path('/');
+          $location.path('/admin/stores/');
         });
       }
     };
