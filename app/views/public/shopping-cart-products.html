@@ -2,6 +2,15 @@
   <h1>{{ store.name }}<br><small>{{ store.address }}</small></h1>
 </header>
 <h3>{{ product.name }}</h3>
+
+<div style="height: 500px">
+  <carousel interval="400">
+    <slide ng-repeat="slide in slides" active="slide.active">
+      <img ng-src="{{slide.image}}" style="margin:auto;">
+    </slide>
+  </carousel>
+</div>
+
 <dl>
   <dt>Price</dt>
   <dd>{{ product.price | currency }}</dd>

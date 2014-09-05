@@ -18,7 +18,23 @@ angular.module('gapStoreApp')
 
     promisseStore.then(function (data) {
       $scope.store = data;
-    })
+    });
+
+    $scope.slides = [
+      {
+        image: 'https://placeimg.com/500/500/people',
+      },
+      {
+        image: 'https://placeimg.com/500/490/people',
+      },
+      {
+        image: 'https://placeimg.com/500/480/people',
+      },
+      {
+        image: 'https://placeimg.com/500/470/people',
+      }
+
+    ];
 
     $scope.addToCart = function (product) {
       if ($scope.cartAdd.$valid) {
