@@ -29,7 +29,7 @@
   </div>
   <div class="form-group required" ng-class="{ 'has-error' : createProduct.image.$invalid && !createProduct.image.$pristine }">
     <label class="control-label" for="product-image">The shoes are:</label>
-    <select class="form-control" id="product-image" name="image" ng-model="product.image" ng-options="image.name for image in images" required></select>
+    <select class="form-control" id="product-image" name="image" ng-model="image" ng-options="image.name for image in images" required></select>
     <p ng-show="createProduct.image.$invalid && !createProduct.image.$pristine" class="help-block">Product image is required.</p>
   </div>
   <button type="submit" class="btn btn-block btn-success" ng-disabled="editProduct.$invalid">Update product</button>

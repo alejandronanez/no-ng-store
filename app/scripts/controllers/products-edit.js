@@ -56,7 +56,7 @@ angular.module('gapStoreApp')
             price: $scope.product.price,
             total_in_shelf: $scope.product.total_in_shelf,
             total_in_vault: $scope.product.total_in_vault,
-            image: $scope.product.image
+            image: $scope.image
           });
       
       promisse.then(function () {

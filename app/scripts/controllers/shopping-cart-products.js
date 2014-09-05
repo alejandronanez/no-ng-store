@@ -37,7 +37,7 @@ angular.module('gapStoreApp')
           cartData['store_id'] = parseInt($routeParams['store_id']);
           cartData['qty'] = $scope.total_bought;
           shoppingCartFactory.updateCart(cartData);
-          $location.path('/shopping-cart/stores/' + $scope.store.id);
+          $location.path('/shopping-cart/my-cart/');
         });
 
       }
