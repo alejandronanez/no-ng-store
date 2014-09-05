@@ -13,14 +13,14 @@
 	- [X] Store real data
 	- [X] Update real data
 	- [X] Validate forms
-	- [ ] Delete real data
+	- [X] Delete real data
 
 ## CLIENT
 	- [X] View Stores
 	- [X] Store detail
-	- [ ] Product detail
-		- [ ] Zoom into image
-		- [ ]  Different product images (slider)
+	- [X] Product detail
+		- [X] Zoom into image
+		- [X]  Different product images (slider)
 		- [X] Add product to cart
 	- [X] Cart
 		- [X] View cart
