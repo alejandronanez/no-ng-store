@@ -10,10 +10,11 @@
  */
 angular
   .module('gapStoreApp', [
-    'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'ui.bootstrap',
+    'ImageZoom'
   ])
   .config(function ($routeProvider) {
     $routeProvider

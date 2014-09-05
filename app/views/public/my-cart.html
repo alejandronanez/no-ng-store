@@ -24,6 +24,4 @@
 
 <h3 class="text-right">TOTAL: {{ getTotal() | currency }}</h3>
 
-<div class="list-group">
-  <a ng-repeat="product in products" href="#/shopping-cart/stores/{{ store.id }}" class="list-group-item">{{ store.name }} -  <em class="text-muted">{{ store.address }}</em></a>
-</div>
+<a href="#/shopping-cart/" class="btn btn-block btn-danger">Go back to stores list</a>

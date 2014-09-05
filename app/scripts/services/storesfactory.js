@@ -157,6 +157,7 @@ angular.module('gapStoreApp')
           actualData[recordIndex]['products'][productIndex]['price'] = data['price'];
           actualData[recordIndex]['products'][productIndex]['total_in_shelf'] = data['total_in_shelf'];
           actualData[recordIndex]['products'][productIndex]['total_in_vault'] = data['total_in_vault'];
+          actualData[recordIndex]['products'][productIndex]['image'] = data['image'];
           deferred.resolve(localstorageFactory.set('stores', actualData));
 
           return deferred.promise;

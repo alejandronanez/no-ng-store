@@ -9,6 +9,7 @@
  */
 angular.module('gapStoreApp')
   .controller('MyCartCtrl', ['$scope', 'shoppingCartFactory', function ($scope, shoppingCartFactory) {
+    
     $scope.cartItems = shoppingCartFactory.getCartCheckout();
 
     /**

@@ -24,6 +24,36 @@ angular.module('gapStoreApp')
         $location.path('/');
       }
     });
+
+    $scope.images = [
+      {
+        id: 0,
+        name: 'Converse',
+        images: [
+          '/images/shoes-converse-1.jpg',
+          '/images/shoes-converse-2.jpg',
+          '/images/shoes-converse-3.jpg'
+        ]
+      },
+      {
+        id: 1,
+        name: 'Pink Heels',
+        images: [
+          '/images/shoes-pink-heels-1.jpg',
+          '/images/shoes-pink-heels-2.jpg',
+          '/images/shoes-pink-heels-3.jpg'
+        ]
+      },
+      {
+        id: 2,
+        name: 'Gold heels',
+        images: [
+          '/images/shoes-gold-heels-1.jpg',
+          '/images/shoes-gold-heels-2.jpg',
+          '/images/shoes-gold-heels-3.jpg'
+        ]
+      }
+    ];
     
     /**
      * Create a new product
@@ -36,6 +66,7 @@ angular.module('gapStoreApp')
           price: $scope.price,
           total_in_shelf: $scope.total_in_shelf,
           total_in_vault: $scope.total_in_vault,
+          image: $scope.image,
           store_id: storeId
         });
 
