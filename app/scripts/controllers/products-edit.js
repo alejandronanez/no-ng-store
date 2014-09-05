@@ -15,9 +15,38 @@ angular.module('gapStoreApp')
       $scope.product = data;
     });
 
+    $scope.images = [
+      {
+        id: 0,
+        name: 'Converse',
+        images: [
+          '/images/shoes-converse-1.jpg',
+          '/images/shoes-converse-2.jpg',
+          '/images/shoes-converse-3.jpg'
+        ]
+      },
+      {
+        id: 1,
+        name: 'Pink Heels',
+        images: [
+          '/images/shoes-pink-heels-1.jpg',
+          '/images/shoes-pink-heels-2.jpg',
+          '/images/shoes-pink-heels-3.jpg'
+        ]
+      },
+      {
+        id: 2,
+        name: 'Gold heels',
+        images: [
+          '/images/shoes-gold-heels-1.jpg',
+          '/images/shoes-gold-heels-2.jpg',
+          '/images/shoes-gold-heels-3.jpg'
+        ]
+      }
+    ];
+
     $scope.update = function () {
       if ($scope.editProduct.$valid) {
-        debugger;
         var promisse = storesFactory.updateProduct({
             id: $routeParams.id,
             store_id: $routeParams.store_id
@@ -26,7 +55,8 @@ angular.module('gapStoreApp')
             description: $scope.product.description,
             price: $scope.product.price,
             total_in_shelf: $scope.product.total_in_shelf,
-            total_in_vault: $scope.product.total_in_vault
+            total_in_vault: $scope.product.total_in_vault,
+            image: $scope.product.image
           });
       
       promisse.then(function () {

@@ -20,17 +20,6 @@ angular.module('gapStoreApp')
       $scope.store = data;
     });
 
-    $scope.slides = [
-      {
-        image: '/images/shoes-1.jpg',
-        imageZoom: '/images/shoes-a-1.jpg',
-      },
-      {
-        image: '/images/shoes-1.jpg',
-        imageZoom: '/images/shoes-a-2.jpg',
-      }
-    ];
-
     $scope.addToCart = function (product) {
       if ($scope.cartAdd.$valid) {
         var cartData = {},

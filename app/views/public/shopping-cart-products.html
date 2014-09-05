@@ -1,6 +1,6 @@
 <carousel interval="-1" style="width: 250px; height: 250px;">
-  <slide ng-repeat="slide in slides" active="slide.active">
-    <img ng-src="{{slide.image}}" image-src="{{slide.imageZoom}}" image-zoom>
+  <slide ng-repeat="slide in product.image.images">
+    <img ng-src="{{slide}}" image-src="{{slide}}" image-zoom>
   </slide>
 </carousel>
 <header>
