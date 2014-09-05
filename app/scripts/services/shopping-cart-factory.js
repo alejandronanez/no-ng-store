@@ -42,6 +42,11 @@ angular.module('gapStoreApp')
             });
           });
 
+          if (!result.length) {
+            localstorageFactory.set('cart', []);
+            return [];
+          }
+
           // Get all products on cart
           _.each(cart, function (element) {
             finalArray.push( _.extend(element,
@@ -49,6 +54,11 @@ angular.module('gapStoreApp')
               )
             );
           });
+
+          if (!finalArray.length) {
+            localstorageFactory.set('cart', []);
+            return [];
+          }
 
           for (var i in finalArray) {
             if (!finalArray[i].hasOwnProperty(0)) {
