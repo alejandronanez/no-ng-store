@@ -50,7 +50,6 @@ angular.module('gapStoreApp')
           });
 
           for (var i in finalArray) {
-            debugger;
             if (!finalArray[i].hasOwnProperty(0)) {
               finalArray.splice(i, 1);
             }
