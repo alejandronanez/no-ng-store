@@ -18,11 +18,11 @@
         <td>{{ store.id }}</td>
         <td>{{ store.name }}</td>
         <td>{{ store.address }}</td>
-        <td><a href="#/stores/{{ store.id }}">View</a></td>
-        <td><a href="#/stores/{{ store.id }}/edit">Edit</a></td>
+        <td><a href="#/admin/stores/{{ store.id }}">View</a></td>
+        <td><a href="#/admin/stores/{{ store.id }}/edit">Edit</a></td>
         <td><a href ng-click="delete(store)">Delete</a></td>
       </tr>
     </tbody>
   </table>
 </div>
-<a href="#/stores/new" class="btn btn-block btn-success">Create store</a>
+<a href="#/admin/stores/new" class="btn btn-block btn-success">Create store</a>

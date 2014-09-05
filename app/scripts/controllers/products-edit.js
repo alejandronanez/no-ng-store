@@ -60,7 +60,7 @@ angular.module('gapStoreApp')
           });
       
       promisse.then(function () {
-        $location.path('/stores/' + $routeParams.store_id);
+        $location.path('/admin/stores/' + $routeParams.store_id);
       });
 
       }

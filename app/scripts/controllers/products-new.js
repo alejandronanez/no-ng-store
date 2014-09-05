@@ -11,7 +11,7 @@ angular.module('gapStoreApp')
   .controller('ProductsNewCtrl', ['$scope', 'storesFactory', '$location', '$routeParams', function ($scope, storesFactory, $location, $routeParams) {
 
     if (!$routeParams['store_id']) {
-      $location.path('/');
+      $location.path('/admin/stores');
     }
     
     var storeId = parseInt($routeParams['store_id']),
@@ -21,7 +21,7 @@ angular.module('gapStoreApp')
       $scope.store = data;
       
       if (!$scope.store) {
-        $location.path('/');
+        $location.path('/admin/stores');
       }
     });
 
@@ -70,7 +70,9 @@ angular.module('gapStoreApp')
           store_id: storeId
         });
 
-        promisse.then(function () { $location.path('/stores/' + storeId); });
+        promisse.then(function () {
+          $location.path('/admin/stores/' + storeId);
+        });
       }
     };
   }]);
